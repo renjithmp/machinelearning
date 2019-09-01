@@ -1,0 +1,43 @@
+#!/usr/bin/python
+#usecase
+#Princess Peach is trapped in one of the four corners of a square grid. You are in the center of the grid and can move one step at a time in any of the four directions. Can you rescue the princess?
+def displayPathtoPrincess(n, grid):
+    p = [0,0]
+    m = [0,0]
+    sol = 0
+    i = 0
+    j = 0
+    # print all the moves here
+    for str in grid:
+        if 'p' in str:
+            p[0]=i
+            p[1] = str.index('p')
+            sol+=1
+        if 'm' in str:
+            m[0]=i
+            m[1]=str.index('m')
+            sol+=1
+        if sol == 2:
+            break
+        i+=1
+
+    if p[0] < m[0]:
+        text = 'UP'
+    else:
+        text = 'DOWN'
+    for i in range(abs(p[0] - m[0])):
+        print(text)
+
+    if p[1] < m[1]:
+        text = 'LEFT'
+    else:
+        text = 'RIGHT'
+    for i in range(abs(p[0] - m[0])):
+        print(text)
+
+m = int(input())
+grid = []
+for i in range(0, m):
+    grid.append(input().strip())
+
+displayPathtoPrincess(m, grid)
